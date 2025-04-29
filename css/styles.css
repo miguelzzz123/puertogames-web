@@ -219,6 +219,16 @@ nav ul li a:hover {
     justify-content: space-between; /* Distribuir espacio entre elementos */
 }
 
+/* Estilo para los iconos dentro de las tarjetas de categoría */
+.categoria-item i {
+    font-size: 3rem; /* Tamaño del icono */
+    color: var(--clr-accent); /* Color del icono */
+    margin-bottom: var(--spacing-unit); /* Espacio debajo del icono */
+    display: block; /* Hace que el icono se comporte como un bloque */
+    margin-left: auto; /* Centrar el icono horizontalmente */
+    margin-right: auto; /* Centrar el icono horizontalmente */
+}
+
 /* Regla para las imágenes dentro de .producto-item en la sección destacados */
 .producto-item img {
     display: block; /* Eliminar espacio extra debajo de la imagen */
@@ -229,6 +239,15 @@ nav ul li a:hover {
     margin-bottom: calc(var(--spacing-unit) * 2); /* Espacio debajo de la imagen */
     border-radius: var(--border-radius-base); /* Bordes redondeados */
 }
+
+/* Eliminamos o modificamos estilos específicos del placeholder de categoría si ya no se usan */
+/*
+.categoria-item .placeholder-imagen {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    aspect-ratio: 1 / 1;
+    max-width: 150px;
+}
+*/
 
 
 /* :hover en las tarjetas */
@@ -269,12 +288,12 @@ nav ul li a:hover {
 
 .boton:hover, .ver-mas:hover {
     background-color: var(--clr-accent-hover);
-    transform: scale(1.01); /* <--- ESCALADO REDUCIDO */
+    transform: scale(1.01); /* <--- ESCALADO REDUCIDO (para intentar evitar desaparición) */
 }
-.ver-mas { /* Estilo un poco diferente para 'ver más' si quieres */
+.ver-mas { /* Estilo específico para 'ver más' en tarjeta producto */
     padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2); /* 8px 16px */
     font-size: 0.9rem;
-    margin-top: auto; /* <--- Empuja al final en Flexbox */
+    margin-top: auto; /* <--- Empuja al final en Flexbox de .producto-item */
 }
 
 
@@ -367,9 +386,7 @@ footer {
     border-radius: var(--border-radius-base);
     padding: calc(var(--spacing-unit) * 3);
     overflow: hidden; /* Asegurarse de que overflow hidden esté aquí */
-    /* Añadir padding extra para dar espacio al escalado de botones */
-    padding-bottom: calc(var(--spacing-unit) * 4); /* <--- Aumentado padding inferior */
-    padding-right: calc(var(--spacing-unit) * 4); /* <--- Aumentado padding derecho */
+    /* Eliminado: padding-bottom y padding-right extra */
 }
 
 .producto-imagen-detalle {
@@ -378,7 +395,6 @@ footer {
     aspect-ratio: 4 / 5;
     margin: 0 auto;
     border-radius: var(--border-radius-base);
-    /* Placeholder styles if needed */
 }
 
 .producto-imagen-detalle img {
@@ -418,14 +434,17 @@ footer {
     display: flex;
     gap: var(--spacing-unit);
     flex-wrap: wrap;
-    padding: calc(var(--spacing-unit) * 2); /* <--- Padding aumentado a 16px */
+    /* Eliminado: padding en .acciones */
+    overflow: visible; /* Asegurar que el overflow no esté en este contenedor */
 }
 
 .acciones .boton {
     /* Hereda estilos del botón general en styles.css */
     flex-grow: 1;
     text-align: center;
-    margin: var(--spacing-unit); /* <--- Margen alrededor de cada botón */
+    margin: var(--spacing-unit); /* Margen alrededor de cada botón */
+    flex-shrink: 0; /* Evitar que el botón se encoja */
+    flex-basis: auto; /* Usar tamaño basado en contenido */
 }
 
 .acciones .boton.comprar {
@@ -447,21 +466,23 @@ footer {
     .producto-imagen-detalle {
         margin: 0;
         flex-shrink: 0;
-        max-width: 400px;
+        flex-basis: 40%; /* Imagen intenta ocupar el 40% */
+        max-width: 400px; /* Ancho máximo absoluto */
     }
 
     .producto-texto {
         flex-grow: 1;
+        flex-basis: 60%; /* Texto intenta ocupar el 60% */
     }
 
     .acciones {
         justify-content: flex-start;
-        /* Asegurarse de que no haya padding aquí */
-        padding: 0; /* <--- Asegurado que el padding sea 0 */
+        padding: 0; /* Padding 0 en escritorio */
     }
      .acciones .boton {
         flex-grow: 0;
-        margin: var(--spacing-unit); /* El margen añadido arriba seguirá aplicando */
+        margin: var(--spacing-unit); /* Margen en los botones */
+        /* flex-shrink: 0; flex-basis: auto; <-- Ya definidos fuera del MQ */
     }
 }
 
