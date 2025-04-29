@@ -216,7 +216,7 @@ nav ul li a:hover {
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Animación hover */
     display: flex; /* Añadir flexbox para mejor control del contenido de la tarjeta */
     flex-direction: column; /* Apilar contenido verticalmente */
-    /* Eliminado: justify-content: space-between; */ /* Ya no es necesario con margin-top: auto; */
+    /* Eliminado: justify-content: space-between; */ /* Se maneja con margin-top: auto; en el botón */
 }
 
 /* Regla para las imágenes dentro de .producto-item en la sección destacados */
@@ -271,10 +271,10 @@ nav ul li a:hover {
     background-color: var(--clr-accent-hover);
     transform: scale(1.02); /* Ligero zoom */
 }
-.ver-mas { /* Estilo un poco diferente para 'ver más' si quieres */
+.ver-mas { /* Estilo específico para 'ver más' */
     padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2); /* 8px 16px */
     font-size: 0.9rem;
-    margin-top: auto; /* Añadido para empujar al final en Flexbox */
+    margin-top: auto; /* <--- Añadido: Empuja al final en Flexbox */
 }
 
 
@@ -305,7 +305,6 @@ footer {
 @media (max-width: 992px) {
     .categorias-container,
     .destacados-container {
-        /* Ajustar número mínimo de columnas o tamaño base si es necesario */
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: calc(var(--spacing-unit) * 2); /* 16px */
     }
@@ -331,57 +330,63 @@ footer {
 }
 
 @media (max-width: 480px) {
-    body { font-size: 15px; } /* Ajustar tamaño base si es necesario */
+    body { font-size: 15px; }
     h2 { font-size: 1.4rem; }
 
     .categorias-container,
     .destacados-container {
-        /* Forzar una sola columna en pantallas muy pequeñas */
         grid-template-columns: 1fr;
-        gap: calc(var(--spacing-unit) * 3); /* 24px */
+        gap: calc(var(--spacing-unit) * 3);
     }
     .categoria-item,
     .producto-item {
-      max-width: 300px; /* Limitar el ancho en 1 columna */
-      margin: 0 auto; /* Centrar en la columna única */
+      max-width: 300px;
+      margin: 0 auto;
     }
 
     #hero { min-height: 40vh; }
     #hero h2 { font-size: 1.8rem; }
     #hero p { font-size: 0.9rem; }
 
-    .boton, .ver-mas { padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 2.5); font-size: 0.9rem;} /* 9.6px 20px */
+    .boton, .ver-mas { padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 2.5); font-size: 0.9rem;}
 }
 
 /* --- Estilos específicos para la página de Producto --- */
 
 #detalle-producto {
-    padding-top: calc(var(--spacing-unit) * 4); /* Ajustar padding superior */
+    padding-top: calc(var(--spacing-unit) * 4);
 }
 
 .producto-info {
-    display: flex; /* Usar flexbox para la disposición de imagen y texto */
-    flex-direction: column; /* Apilar elementos por defecto en móviles */
-    gap: calc(var(--spacing-unit) * 4); /* Espacio entre imagen y texto */
-    max-width: 900px; /* Limitar ancho del contenido */
-    margin: 0 auto; /* Centrar el contenedor */
-    background-color: var(--clr-medium-bg); /* Fondo de tarjeta */
-    border-radius: var(--border-radius-base); /* Bordes redondeados */
-    padding: calc(var(--spacing-unit) * 3); /* Padding interno */
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 4);
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--clr-medium-bg);
+    border-radius: var(--border-radius-base);
+    padding: calc(var(--spacing-unit) * 3);
 }
 
 .producto-imagen-detalle {
-    width: 100%; /* Imagen ocupa todo el ancho en móvil */
-    max-width: 400px; /* Ancho máximo para la imagen */
-    aspect-ratio: 4 / 5; /* Proporción similar a la del index */
-    margin: 0 auto; /* Centrar imagen en móvil */
-    border-radius: var(--border-radius-base); /* Bordes redondeados */
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto;
+    border-radius: var(--border-radius-base);
+    /* Placeholder styles if needed */
+}
+
+.producto-imagen-detalle img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-base);
 }
 
 .producto-texto {
     display: flex;
     flex-direction: column;
-    /* Alineación ajustada en media query */
 }
 
 .producto-texto h3 {
@@ -392,7 +397,7 @@ footer {
 
 .producto-texto .precio {
     font-size: 1.5rem;
-    color: var(--clr-accent); /* Color de acento para el precio */
+    color: var(--clr-accent);
     margin-bottom: calc(var(--spacing-unit) * 2);
     font-weight: 700;
 }
@@ -407,55 +412,54 @@ footer {
 .acciones {
     margin-top: calc(var(--spacing-unit) * 3);
     display: flex;
-    gap: var(--spacing-unit); /* Espacio entre botones */
-    flex-wrap: wrap; /* Permitir que los botones se envuelvan */
-    padding: var(--spacing-unit); /* Añade un pequeño padding alrededor de los botones */
+    gap: var(--spacing-unit);
+    flex-wrap: wrap;
+    padding: var(--spacing-unit); /* <--- Añadido: Padding para dar espacio extra a los botones */
 }
 
 .acciones .boton {
-    /* Hereda estilos del botón general en styles.css */
-    flex-grow: 1; /* Permitir que los botones crezcan */
+    flex-grow: 1;
     text-align: center;
 }
 
 .acciones .boton.comprar {
-    background-color: green; /* Ejemplo de color diferente para comprar */
+    background-color: green;
 }
 
 .acciones .boton.comprar:hover {
-    background-color: darkgreen; /* Pseudoclase :hover */
+    background-color: darkgreen;
 }
 
-
-/* Comentario: Media Query para pantallas más grandes (escritorio) */
+/* Media Query para pantallas más grandes (escritorio) */
 @media (min-width: 768px) {
     .producto-info {
-        flex-direction: row; /* Disposición en fila en escritorio */
+        flex-direction: row;
         text-align: left;
-        align-items: flex-start; /* Alinear elementos al inicio */
+        align-items: flex-start;
     }
 
     .producto-imagen-detalle {
-        margin: 0; /* Eliminar centrado en escritorio */
-        flex-shrink: 0; /* Evitar que la imagen se encoja */
+        margin: 0;
+        flex-shrink: 0;
+        max-width: 400px;
     }
 
     .producto-texto {
-        flex-grow: 1; /* Permitir que el texto ocupe el espacio restante */
+        flex-grow: 1;
     }
 
     .acciones {
-        justify-content: flex-start; /* Alinear botones a la izquierda */
+        justify-content: flex-start;
     }
      .acciones .boton {
-        flex-grow: 0; /* No permitir que los botones crezcan desproporcionadamente */
+        flex-grow: 0;
     }
 }
 
-/* Comentario: Media Query para pantallas muy pequeñas (Estilos de Producto) */
+/* Media Query para pantallas muy pequeñas (Estilos de Producto) */
 @media (max-width: 480px) {
     .producto-info {
-        padding: calc(var(--spacing-unit) * 2); /* Reducir padding en móviles */
+        padding: calc(var(--spacing-unit) * 2);
     }
     .producto-texto h3 {
         font-size: 1.5rem;
@@ -471,27 +475,27 @@ footer {
 /* --- Estilos específicos para la página de Contacto --- */
 
 #formulario-contacto {
-    padding-top: calc(var(--spacing-unit) * 4); /* Ajustar padding superior */
+    padding-top: calc(var(--spacing-unit) * 4);
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar el contenido */
+    align-items: center;
 }
 
 .formulario {
-    background-color: var(--clr-medium-bg); /* Fondo de formulario */
+    background-color: var(--clr-medium-bg);
     border-radius: var(--border-radius-base);
     padding: calc(var(--spacing-unit) * 4);
-    max-width: 600px; /* Limitar ancho del formulario */
-    width: 100%; /* Asegurar que ocupe el ancho disponible */
+    max-width: 600px;
+    width: 100%;
     display: flex;
-    flex-direction: column; /* Disposición en columna */
-    gap: calc(var(--spacing-unit) * 2); /* Espacio entre grupos de formulario */
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 2);
 }
 
 .form-group-inline {
-    display: flex; /* Usar flexbox para nombre y correo */
-    flex-direction: column; /* Apilar en móviles */
-    gap: calc(var(--spacing-unit) * 2); /* Espacio entre campos */
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 2);
 }
 
 .form-control {
@@ -511,8 +515,8 @@ footer {
     padding: var(--spacing-unit);
     border: 1px solid var(--clr-placeholder-bg);
     border-radius: var(--border-radius-base);
-    background-color: var(--clr-dark-bg); /* Fondo de campos de entrada */
-    color: var(--clr-light-text); /* Color de texto de entrada */
+    background-color: var(--clr-dark-bg);
+    color: var(--clr-light-text);
     font-family: var(--font-main);
     font-size: 1rem;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -522,38 +526,37 @@ footer {
 .form-control input[type="email"]:focus,
 .form-control textarea:focus {
     outline: none;
-    border-color: var(--clr-accent); /* Color de acento al enfocar */
-    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5); /* Sombra sutil al enfocar */
+    border-color: var(--clr-accent);
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
 }
 
 .form-control textarea {
-    resize: vertical; /* Permitir redimensionar verticalmente */
+    resize: vertical;
 }
 
 .formulario .boton {
-    margin-top: var(--spacing-unit); /* Espacio encima del botón */
-    /* Hereda estilos del botón general en styles.css */
-    align-self: center; /* Centrar el botón */
-    width: auto; /* Ancho automático */
+    margin-top: var(--spacing-unit);
+    align-self: center;
+    width: auto;
 }
 
-/* Comentario: Media Query para pantallas más grandes (escritorio) */
+/* Media Query para pantallas más grandes (escritorio) */
 @media (min-width: 600px) {
     .form-group-inline {
-        flex-direction: row; /* Mostrar en fila en escritorio */
+        flex-direction: row;
     }
 
     .form-group-inline .form-control {
-        flex: 1; /* Distribuir espacio equitativamente */
+        flex: 1;
     }
 }
 
-/* Comentario: Media Query para pantallas muy pequeñas (Estilos de Contacto) */
+/* Media Query para pantallas muy pequeñas (Estilos de Contacto) */
 @media (max-width: 480px) {
     .formulario {
-        padding: calc(var(--spacing-unit) * 2); /* Reducir padding en móviles */
+        padding: calc(var(--spacing-unit) * 2);
     }
     .form-group-inline {
-        gap: var(--spacing-unit); /* Reducir espacio entre campos apilados */
+        gap: var(--spacing-unit);
     }
 }
