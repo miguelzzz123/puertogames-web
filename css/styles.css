@@ -216,7 +216,7 @@ nav ul li a:hover {
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Animación hover */
     display: flex; /* Añadir flexbox para mejor control del contenido de la tarjeta */
     flex-direction: column; /* Apilar contenido verticalmente */
-    /* Eliminado: justify-content: space-between; */ /* Se maneja con margin-top: auto; en el botón */
+    justify-content: space-between; /* Distribuir espacio entre elementos */
 }
 
 /* Regla para las imágenes dentro de .producto-item en la sección destacados */
@@ -269,12 +269,11 @@ nav ul li a:hover {
 
 .boton:hover, .ver-mas:hover {
     background-color: var(--clr-accent-hover);
-    transform: scale(1.02); /* Ligero zoom */
+    transform: scale(1.01); /* <--- ESCALADO REDUCIDO */
 }
-.ver-mas { /* Estilo específico para 'ver más' */
+.ver-mas { /* Estilo un poco diferente para 'ver más' si quieres */
     padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2); /* 8px 16px */
     font-size: 0.9rem;
-    margin-top: auto; /* <--- Añadido: Empuja al final en Flexbox */
 }
 
 
@@ -305,6 +304,7 @@ footer {
 @media (max-width: 992px) {
     .categorias-container,
     .destacados-container {
+        /* Ajustar número mínimo de columnas o tamaño base si es necesario */
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: calc(var(--spacing-unit) * 2); /* 16px */
     }
@@ -366,6 +366,7 @@ footer {
     background-color: var(--clr-medium-bg);
     border-radius: var(--border-radius-base);
     padding: calc(var(--spacing-unit) * 3);
+    overflow: hidden; /* Asegurarse de que overflow hidden esté aquí */
 }
 
 .producto-imagen-detalle {
@@ -414,12 +415,14 @@ footer {
     display: flex;
     gap: var(--spacing-unit);
     flex-wrap: wrap;
-    padding: var(--spacing-unit); /* <--- Añadido: Padding para dar espacio extra a los botones */
+    /* padding: var(--spacing-unit); <-- Eliminamos padding aquí para usar margen en botones */
 }
 
 .acciones .boton {
+    /* Hereda estilos del botón general en styles.css */
     flex-grow: 1;
     text-align: center;
+    margin: var(--spacing-unit); /* <--- Añadido: Margen alrededor de cada botón */
 }
 
 .acciones .boton.comprar {
@@ -450,9 +453,12 @@ footer {
 
     .acciones {
         justify-content: flex-start;
+        /* Asegurarse de que no haya padding aquí */
+        padding: 0; /* <--- Asegurado que el padding sea 0 */
     }
      .acciones .boton {
         flex-grow: 0;
+        /* El margen añadido arriba seguirá aplicando */
     }
 }
 
