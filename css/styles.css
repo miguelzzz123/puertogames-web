@@ -230,26 +230,6 @@ nav ul li a:hover {
     border-radius: var(--border-radius-base); /* Bordes redondeados */
 }
 
-/* ... (resto de estilos para .producto-item:hover, etc.) ... */
-
-/* Estilo para el enlace "Ver más" dentro de .producto-item */
-.producto-item .ver-mas {
-    margin-top: auto; /* <--- Añadido: Empuja este elemento y los siguientes al final del contenedor flex */
-    /* ... otros estilos existentes para .ver-mas ... */
-    display: inline-block;
-    background-color: var(--clr-accent);
-    color: #fff;
-    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
-    border: none;
-    border-radius: var(--border-radius-base);
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    font-size: 0.9rem;
-}
-
 
 /* :hover en las tarjetas */
 .categoria-item:hover,
@@ -294,6 +274,7 @@ nav ul li a:hover {
 .ver-mas { /* Estilo un poco diferente para 'ver más' si quieres */
     padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2); /* 8px 16px */
     font-size: 0.9rem;
+    margin-top: auto; /* Añadido para empujar al final en Flexbox */
 }
 
 
@@ -389,30 +370,13 @@ footer {
     padding: calc(var(--spacing-unit) * 3); /* Padding interno */
 }
 
-/* Regla para la imagen dentro del div producto-imagen-detalle en las páginas de producto */
-.producto-imagen-detalle img {
-    display: block; /* Eliminar espacio extra debajo de la imagen */
-    width: 100%; /* La imagen ocupa todo el ancho de su contenedor (.producto-imagen-detalle) */
-    height: auto; /* La altura se ajusta automáticamente */
-    border-radius: var(--border-radius-base); /* Bordes redondeados */
-}
-
-/* Se mantiene la regla para el contenedor producto-imagen-detalle para controlar su tamaño y proporción */
 .producto-imagen-detalle {
-    width: 100%; /* Ocupa el ancho disponible en móvil */
-    max-width: 400px; /* Ancho máximo para el contenedor de la imagen */
-    aspect-ratio: 4 / 5; /* Proporción del contenedor */
-    margin: 0 auto; /* Centrar contenedor en móvil */
+    width: 100%; /* Imagen ocupa todo el ancho en móvil */
+    max-width: 400px; /* Ancho máximo para la imagen */
+    aspect-ratio: 4 / 5; /* Proporción similar a la del index */
+    margin: 0 auto; /* Centrar imagen en móvil */
     border-radius: var(--border-radius-base); /* Bordes redondeados */
-    /* Las siguientes reglas son del placeholder, puedes eliminarlas si no usas placeholders visuales */
-    /* background-color: var(--clr-placeholder-bg); */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* font-size: 0.9rem; */
-    /* color: var(--clr-dim-text); */
 }
-
 
 .producto-texto {
     display: flex;
@@ -445,6 +409,7 @@ footer {
     display: flex;
     gap: var(--spacing-unit); /* Espacio entre botones */
     flex-wrap: wrap; /* Permitir que los botones se envuelvan */
+    padding: var(--spacing-unit); /* Añade un pequeño padding alrededor de los botones */
 }
 
 .acciones .boton {
@@ -566,7 +531,7 @@ footer {
 }
 
 .formulario .boton {
-    margin-top: calc(var(--spacing-unit) * 3);
+    margin-top: var(--spacing-unit); /* Espacio encima del botón */
     /* Hereda estilos del botón general en styles.css */
     align-self: center; /* Centrar el botón */
     width: auto; /* Ancho automático */
