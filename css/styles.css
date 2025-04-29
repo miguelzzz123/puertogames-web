@@ -1,0 +1,574 @@
+/* --- Variables Estilo Oscuro --- */
+:root {
+    --clr-dark-bg: #1a1f25;       /* Fondo principal oscuro, azulado/grisáceo */
+    --clr-medium-bg: #2a3139;     /* Fondo secundario para tarjetas, etc. */
+    --clr-light-text: #e1e3e6;    /* Texto principal claro */
+    --clr-dim-text: #a0a7af;      /* Texto secundario o menos importante */
+    --clr-accent: #00aaff;       /* Azul vibrante para acentos */
+    --clr-accent-hover: #0088cc; /* Azul un poco más oscuro para hover */
+    --clr-placeholder-bg: #3c444c; /* Gris oscuro para placeholders */
+    --font-main: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente limpia */
+    --spacing-unit: 8px;
+    --border-radius-base: 4px;
+}
+
+/* --- Estilos Globales y Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--clr-dark-bg); /* Fondo oscuro por defecto */
+    color: var(--clr-light-text);         /* Texto claro por defecto */
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: calc(var(--spacing-unit) * 1.5); /* 12px */
+    color: var(--clr-light-text); /* Títulos claros también */
+}
+
+h2 { /* Títulos de sección */
+    margin-top: calc(var(--spacing-unit) * 3); /* 24px */
+    margin-bottom: calc(var(--spacing-unit) * 4); /* 32px */
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase; /* Estilo más "gamer" */
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--clr-accent); /* Línea de acento bajo el título */
+    display: inline-block; /* Para que el borde no ocupe todo el ancho */
+    padding-bottom: var(--spacing-unit); /* 8px */
+}
+
+a {
+    color: var(--clr-accent); /* Enlaces usan el color de acento */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--clr-accent-hover); /* Oscurecer un poco al pasar el mouse */
+}
+
+section {
+    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 3); /* 40px arriba/abajo, 24px lados */
+    /* No ponemos background aquí, ya está en el body */
+}
+
+main {
+    /* Evitar que footer se suba */
+    min-height: calc(100vh - 70px - 80px); /* Ajustar según alto real de header/footer */
+}
+
+/* Contenedor general para centrar contenido si es necesario */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc(var(--spacing-unit) * 2); /* 16px */
+    padding-right: calc(var(--spacing-unit) * 2); /* 16px */
+}
+
+
+/* --- Header y Navegación --- */
+header {
+    background-color: var(--clr-medium-bg); /* Fondo ligeramente distinto al body */
+    padding: calc(var(--spacing-unit) * 1.5) 0; /* 12px arriba/abajo */
+    border-bottom: 1px solid var(--clr-placeholder-bg); /* Borde sutil */
+    position: sticky; /* Puede ser útil que el nav se quede fijo */
+    top: 0;
+    z-index: 100; /* Para que esté sobre otros elementos */
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 calc(var(--spacing-unit) * 2); /* 16px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo h1 {
+    margin-bottom: 0; /* Quitar margen inferior del h1 del logo */
+}
+nav .logo h1 a {
+    color: var(--clr-light-text); /* Logo en texto claro */
+    font-size: 1.8rem;
+    font-weight: 700; /* Más grueso */
+    text-decoration: none;
+}
+nav .logo h1 a:hover {
+    color: var(--clr-accent); /* Cambia a color acento al pasar el mouse */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: calc(var(--spacing-unit) * 3); /* 24px */
+}
+
+nav ul li a {
+    color: var(--clr-dim-text); /* Links un poco más apagados */
+    font-weight: 500;
+    padding: var(--spacing-unit); /* 8px */
+    border-radius: var(--border-radius-base);
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* :hover en links del nav */
+nav ul li a:hover {
+    color: var(--clr-light-text); /* Más brillante al pasar */
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo muy sutil */
+}
+
+
+/* --- Placeholder Images (Dark Theme) --- */
+.placeholder-imagen {
+    background-color: var(--clr-placeholder-bg);
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Más panorámico para juegos */
+    margin: 0 auto calc(var(--spacing-unit) * 1.5) auto; /* 12px */
+    border-radius: var(--border-radius-base); /* Bordes redondeados */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--clr-dim-text);
+}
+/* Ajustes específicos si son necesarios */
+.hero-imagen {
+    aspect-ratio: 21 / 9; /* Aún más panorámico */
+    /* content: 'Placeholder Hero Image'; */
+    /* Opcional: Si usas el div, dale estilos */
+    /* max-width: 80%; margin-top: 20px; */
+}
+.categoria-imagen {
+    aspect-ratio: 1 / 1; /* Cuadrado para categorías */
+     max-width: 150px;
+    /* content: 'Placeholder Category'; */
+}
+.producto-imagen {
+    aspect-ratio: 4 / 5; /* Más vertical, tipo 'box art' */
+    /* content: 'Placeholder Game'; */
+}
+
+
+/* --- Sección Hero --- */
+#hero {
+    min-height: 60vh; /* Altura considerable */
+    display: flex; /* Usar flex para centrar contenido verticalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 4); /* 32px */
+    /* Idealmente, aquí iría un background-image con CSS */
+}
+#hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: calc(var(--spacing-unit) * 2); /* 16px */
+    border-bottom: none; /* Quitar borde inferior del h2 general */
+    text-transform: none; /* Sin mayúsculas aquí */
+    letter-spacing: 0;
+    color: #fff; /* Blanco puro para destacar */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para legibilidad */
+}
+#hero p {
+    font-size: 1.2rem;
+    color: var(--clr-dim-text);
+    max-width: 600px; /* Limitar ancho del párrafo */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+/* Ocultamos el placeholder si imaginamos un fondo. Si quieres usar el div, elimina esta regla. */
+#hero .hero-imagen {
+   display: none;
+}
+
+
+/* --- Secciones Categorías y Destacados (GRID) --- */
+/* Heredan el fondo del body */
+
+
+.categorias-container,
+.destacados-container {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado */
+    display: grid; /* ¡La magia del Grid! */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Columnas responsivas */
+    gap: calc(var(--spacing-unit) * 3); /* 24px de espacio entre items */
+}
+
+/* Estilo de las "Tarjetas" */
+.categoria-item,
+.producto-item {
+    background-color: var(--clr-medium-bg); /* Fondo de tarjeta */
+    border-radius: var(--border-radius-base); /* Bordes redondeados */
+    overflow: hidden; /* Para que la imagen no se salga si redondeamos */
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2); /* 16px internos */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Animación hover */
+    display: flex; /* Añadir flexbox para mejor control del contenido de la tarjeta */
+    flex-direction: column; /* Apilar contenido verticalmente */
+    justify-content: space-between; /* Distribuir espacio entre elementos */
+}
+
+/* Regla para las imágenes dentro de .producto-item en la sección destacados */
+.producto-item img {
+    display: block; /* Eliminar espacio extra debajo de la imagen */
+    width: 100%; /* La imagen ocupa todo el ancho de su contenedor (el article) */
+    height: auto; /* La altura se ajusta inicialmente, pero aspect-ratio tendrá prioridad visual */
+    aspect-ratio: 1 / 1; /* Establece una proporción fija (ancho / alto) */
+    object-fit: cover; /* Asegura que la imagen cubra el área manteniendo su proporción original, recortando si es necesario */
+    margin-bottom: calc(var(--spacing-unit) * 2); /* Espacio debajo de la imagen */
+    border-radius: var(--border-radius-base); /* Bordes redondeados */
+}
+
+
+/* :hover en las tarjetas */
+.categoria-item:hover,
+.producto-item:hover {
+    transform: translateY(-5px); /* Levantar un poquito */
+    box-shadow: 0 8px 15px rgba(0, 170, 255, 0.1); /* Sombra sutil con color acento */
+}
+
+/* Se elimina la regla .categoria-item .placeholder-imagen, .producto-item .placeholder-imagen ya que las imágenes se usan directamente */
+
+
+.producto-item h3 { /* Título del juego en la tarjeta */
+    font-size: 1.1rem;
+    margin-bottom: calc(var(--spacing-unit) * 1); /* 8px */
+    color: var(--clr-light-text);
+}
+.categoria-item p { /* Nombre categoría */
+    font-weight: 500;
+    color: var(--clr-dim-text);
+}
+
+
+/* --- Botones y Enlaces tipo Botón --- */
+.boton, .ver-mas {
+    display: inline-block;
+    background-color: var(--clr-accent);
+    color: #fff; /* Texto blanco para contraste */
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 4); /* 12px 32px */
+    border: none;
+    border-radius: var(--border-radius-base);
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.boton:hover, .ver-mas:hover {
+    background-color: var(--clr-accent-hover);
+    transform: scale(1.02); /* Ligero zoom */
+}
+.ver-mas { /* Estilo un poco diferente para 'ver más' si quieres */
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2); /* 8px 16px */
+    font-size: 0.9rem;
+}
+
+
+/* --- Sección CTA --- */
+#cta {
+    text-align: center;
+}
+#cta p {
+    color: var(--clr-dim-text);
+    max-width: 650px;
+    margin: 0 auto calc(var(--spacing-unit) * 3) auto; /* 24px abajo */
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--clr-medium-bg);
+    color: var(--clr-dim-text); /* Texto apagado en footer */
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 3) 0; /* 24px */
+    margin-top: calc(var(--spacing-unit) * 5); /* 40px */
+    font-size: 0.9rem;
+    border-top: 1px solid var(--clr-placeholder-bg);
+}
+
+
+/* --- Media Queries para Responsividad (Estilos Generales) --- */
+@media (max-width: 992px) {
+    .categorias-container,
+    .destacados-container {
+        /* Ajustar número mínimo de columnas o tamaño base si es necesario */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: calc(var(--spacing-unit) * 2); /* 16px */
+    }
+    #hero h2 { font-size: 2.4rem; }
+    #hero p { font-size: 1.1rem; }
+}
+
+@media (max-width: 768px) {
+    h2 { font-size: 1.6rem; }
+    section { padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2); } /* 32px 16px */
+
+    nav { flex-direction: column; text-align: center; }
+    nav ul { margin-top: var(--spacing-unit); justify-content: center; flex-wrap: wrap; }
+    nav ul li { margin: calc(var(--spacing-unit) / 2) var(--spacing-unit); } /* 4px 8px */
+
+    .categorias-container,
+    .destacados-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    #hero { min-height: 50vh; }
+    #hero h2 { font-size: 2rem; }
+    #hero p { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+    body { font-size: 15px; } /* Ajustar tamaño base si es necesario */
+    h2 { font-size: 1.4rem; }
+
+    .categorias-container,
+    .destacados-container {
+        /* Forzar una sola columna en pantallas muy pequeñas */
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-unit) * 3); /* 24px */
+    }
+    .categoria-item,
+    .producto-item {
+      max-width: 300px; /* Limitar el ancho en 1 columna */
+      margin: 0 auto; /* Centrar en la columna única */
+    }
+
+    #hero { min-height: 40vh; }
+    #hero h2 { font-size: 1.8rem; }
+    #hero p { font-size: 0.9rem; }
+
+    .boton, .ver-mas { padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 2.5); font-size: 0.9rem;} /* 9.6px 20px */
+}
+
+/* --- Estilos específicos para la página de Producto --- */
+
+#detalle-producto {
+    padding-top: calc(var(--spacing-unit) * 4); /* Ajustar padding superior */
+}
+
+.producto-info {
+    display: flex; /* Usar flexbox para la disposición de imagen y texto */
+    flex-direction: column; /* Apilar elementos por defecto en móviles */
+    gap: calc(var(--spacing-unit) * 4); /* Espacio entre imagen y texto */
+    max-width: 900px; /* Limitar ancho del contenido */
+    margin: 0 auto; /* Centrar el contenedor */
+    background-color: var(--clr-medium-bg); /* Fondo de tarjeta */
+    border-radius: var(--border-radius-base); /* Bordes redondeados */
+    padding: calc(var(--spacing-unit) * 3); /* Padding interno */
+}
+
+/* Regla para la imagen dentro del div producto-imagen-detalle en las páginas de producto */
+.producto-imagen-detalle img {
+    display: block; /* Eliminar espacio extra debajo de la imagen */
+    width: 100%; /* La imagen ocupa todo el ancho de su contenedor (.producto-imagen-detalle) */
+    height: auto; /* La altura se ajusta automáticamente */
+    border-radius: var(--border-radius-base); /* Bordes redondeados */
+}
+
+/* Se mantiene la regla para el contenedor producto-imagen-detalle para controlar su tamaño y proporción */
+.producto-imagen-detalle {
+    width: 100%; /* Ocupa el ancho disponible en móvil */
+    max-width: 400px; /* Ancho máximo para el contenedor de la imagen */
+    aspect-ratio: 4 / 5; /* Proporción del contenedor */
+    margin: 0 auto; /* Centrar contenedor en móvil */
+    border-radius: var(--border-radius-base); /* Bordes redondeados */
+    /* Las siguientes reglas son del placeholder, puedes eliminarlas si no usas placeholders visuales */
+    /* background-color: var(--clr-placeholder-bg); */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* font-size: 0.9rem; */
+    /* color: var(--clr-dim-text); */
+}
+
+
+.producto-texto {
+    display: flex;
+    flex-direction: column;
+    /* Alineación ajustada en media query */
+}
+
+.producto-texto h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-unit);
+    color: var(--clr-light-text);
+}
+
+.producto-texto .precio {
+    font-size: 1.5rem;
+    color: var(--clr-accent); /* Color de acento para el precio */
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    font-weight: 700;
+}
+
+.producto-texto .descripcion {
+    font-size: 1.1rem;
+    color: var(--clr-dim-text);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    line-height: 1.8;
+}
+
+.acciones {
+    margin-top: calc(var(--spacing-unit) * 3);
+    display: flex;
+    gap: var(--spacing-unit); /* Espacio entre botones */
+    flex-wrap: wrap; /* Permitir que los botones se envuelvan */
+}
+
+.acciones .boton {
+    /* Hereda estilos del botón general en styles.css */
+    flex-grow: 1; /* Permitir que los botones crezcan */
+    text-align: center;
+}
+
+.acciones .boton.comprar {
+    background-color: green; /* Ejemplo de color diferente para comprar */
+}
+
+.acciones .boton.comprar:hover {
+    background-color: darkgreen; /* Pseudoclase :hover */
+}
+
+
+/* Comentario: Media Query para pantallas más grandes (escritorio) */
+@media (min-width: 768px) {
+    .producto-info {
+        flex-direction: row; /* Disposición en fila en escritorio */
+        text-align: left;
+        align-items: flex-start; /* Alinear elementos al inicio */
+    }
+
+    .producto-imagen-detalle {
+        margin: 0; /* Eliminar centrado en escritorio */
+        flex-shrink: 0; /* Evitar que la imagen se encoja */
+    }
+
+    .producto-texto {
+        flex-grow: 1; /* Permitir que el texto ocupe el espacio restante */
+    }
+
+    .acciones {
+        justify-content: flex-start; /* Alinear botones a la izquierda */
+    }
+     .acciones .boton {
+        flex-grow: 0; /* No permitir que los botones crezcan desproporcionadamente */
+    }
+}
+
+/* Comentario: Media Query para pantallas muy pequeñas (Estilos de Producto) */
+@media (max-width: 480px) {
+    .producto-info {
+        padding: calc(var(--spacing-unit) * 2); /* Reducir padding en móviles */
+    }
+    .producto-texto h3 {
+        font-size: 1.5rem;
+    }
+    .producto-texto .precio {
+        font-size: 1.3rem;
+    }
+     .producto-texto .descripcion {
+        font-size: 1rem;
+    }
+}
+
+/* --- Estilos específicos para la página de Contacto --- */
+
+#formulario-contacto {
+    padding-top: calc(var(--spacing-unit) * 4); /* Ajustar padding superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar el contenido */
+}
+
+.formulario {
+    background-color: var(--clr-medium-bg); /* Fondo de formulario */
+    border-radius: var(--border-radius-base);
+    padding: calc(var(--spacing-unit) * 4);
+    max-width: 600px; /* Limitar ancho del formulario */
+    width: 100%; /* Asegurar que ocupe el ancho disponible */
+    display: flex;
+    flex-direction: column; /* Disposición en columna */
+    gap: calc(var(--spacing-unit) * 2); /* Espacio entre grupos de formulario */
+}
+
+.form-group-inline {
+    display: flex; /* Usar flexbox para nombre y correo */
+    flex-direction: column; /* Apilar en móviles */
+    gap: calc(var(--spacing-unit) * 2); /* Espacio entre campos */
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control label {
+    margin-bottom: var(--spacing-unit);
+    color: var(--clr-light-text);
+    font-weight: 500;
+}
+
+.form-control input[type="text"],
+.form-control input[type="email"],
+.form-control textarea {
+    padding: var(--spacing-unit);
+    border: 1px solid var(--clr-placeholder-bg);
+    border-radius: var(--border-radius-base);
+    background-color: var(--clr-dark-bg); /* Fondo de campos de entrada */
+    color: var(--clr-light-text); /* Color de texto de entrada */
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control input[type="text"]:focus,
+.form-control input[type="email"]:focus,
+.form-control textarea:focus {
+    outline: none;
+    border-color: var(--clr-accent); /* Color de acento al enfocar */
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5); /* Sombra sutil al enfocar */
+}
+
+.form-control textarea {
+    resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+.formulario .boton {
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* Hereda estilos del botón general en styles.css */
+    align-self: center; /* Centrar el botón */
+    width: auto; /* Ancho automático */
+}
+
+/* Comentario: Media Query para pantallas más grandes (escritorio) */
+@media (min-width: 600px) {
+    .form-group-inline {
+        flex-direction: row; /* Mostrar en fila en escritorio */
+    }
+
+    .form-group-inline .form-control {
+        flex: 1; /* Distribuir espacio equitativamente */
+    }
+}
+
+/* Comentario: Media Query para pantallas muy pequeñas (Estilos de Contacto) */
+@media (max-width: 480px) {
+    .formulario {
+        padding: calc(var(--spacing-unit) * 2); /* Reducir padding en móviles */
+    }
+    .form-group-inline {
+        gap: var(--spacing-unit); /* Reducir espacio entre campos apilados */
+    }
+}
